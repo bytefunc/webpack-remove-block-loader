@@ -67,7 +67,7 @@ If you will remove HTML comment tags. set options property stert and end.
 
 ### Example2
 
-Options property "active" is the "webpack-remove-block-loader" on or off
+Options property active is the "webpack-remove-block-loader" on or off
 
 ```javascript
 // Cli command. remove the comment block
@@ -86,7 +86,7 @@ module.exports = env => [
             {
                 loader: "webpack-remove-block-loader",
                 options: {
-                    active: env && env.prod,
+                    active: (env && env.prod) || false,
                 }
             }
         ]
