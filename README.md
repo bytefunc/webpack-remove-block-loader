@@ -1,6 +1,6 @@
 # webpack-remove-block-loader
 
-Remove specific comment block at build time
+Remove the specific comment block at build
 
 Forked from [huanz/webpack-strip-block](https://github.com/huanz/webpack-strip-block)
 

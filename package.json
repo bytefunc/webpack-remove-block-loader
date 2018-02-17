@@ -1,7 +1,7 @@
 {
     "name": "webpack-remove-block-loader",
     "version": "1.0.0",
-    "description": "Remove specific comment block at build time",
+    "description": "Remove the specific comment block at build",
     "main": "index.js",
     "repository": {
         "type": "git",
