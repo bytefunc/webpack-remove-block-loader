@@ -12,7 +12,7 @@ function regexEscape(str) {
 
 function removeBlockLoader(content) {
     var opts = loaderUtils.getOptions(this) || {};
-    if (opts.active === false) {
+    if (opts.active !== true) {
         return content;
     }
     var start = regexEscape(opts.start || "/*");
