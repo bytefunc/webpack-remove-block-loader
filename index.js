@@ -1,22 +1,46 @@
 /*jslint node:true */
-'use strict';
+"use strict";
 
-var loaderUtils = require('loader-utils');
+var loaderUtils = require("loader-utils");
 
 function regexEscape(str) {
-    return str.replace(/([\^|\$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi, '\\$1');
+    return str.replace(
+        /([\^|\$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi,
+        "\\$1"
+    );
 }
 
-function StripBlockLoader(content) {
-    var options = loaderUtils.getOptions(this);
-    if (options && options.blocks) {
-        var start = regexEscape(options.start || '/*');
-        var end = regexEscape(options.end || '/*');
-        options.blocks.forEach(function (block) {
-            var regex = new RegExp('[\\t ]*' + start + ' ?(' + block + '):start ?' + end + '[\\s\\S]*?' + start + ' ?\\1:end ?' + end + '[\\t ]*\\n?', 'g');
-            content = content.replace(regex, '');
-        });
+function removeBlockLoader(content) {
+    var opts = loaderUtils.getOptions(this) || {};
+    if (opts.active === false) {
+        return content;
     }
+    var start = regexEscape(opts.start || "/*");
+    var end = regexEscape(opts.end || "*/");
+    var blocks = [];
+    if (opts.hasOwnProperty("blocks")) {
+        blocks = opts.blocks;
+    } else {
+        blocks.push("devblock");
+    }
+
+    blocks.forEach(function(block) {
+        var regex = new RegExp(
+            "[\\t ]*" +
+                start +
+                " ?(" +
+                block +
+                "):start ?" +
+                end +
+                "[\\s\\S]*?" +
+                start +
+                " ?\\1:end ?" +
+                end +
+                "[\\t ]*\\n?",
+            "g"
+        );
+        content = content.replace(regex, "");
+    });
 
     if (this.cacheable) {
         this.cacheable(true);
@@ -25,4 +49,4 @@ function StripBlockLoader(content) {
     return content;
 }
 
-module.exports = StripBlockLoader;
+module.exports = removeBlockLoader;

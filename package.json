@@ -1,28 +1,14 @@
 {
-    "name": "webpack-strip-blocks",
+    "name": "webpack-remove-block-loader",
     "version": "1.0.0",
-    "description": "Webpack plugin to strip blocks of code that's only intended for development purposes",
+    "description": "Remove specific comment block at build time",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git://git@github.com/huanz/webpack-strip-block.git"
+        "url": "https://github.com/bytefunc/webpack-remove-block-loader"
     },
-    "homepage": "https://github.com/huanz/webpack-strip-block",
-    "keywords": [
-        "webpack",
-        "webpackloader",
-        "stripcode"
-    ],
-    "author": {
-        "name": "James Ballantine",
-        "email": "james@1stdibs.com",
-        "url": "http://www.1stdibs.com"
-    },
-    "contributors": [{
-        "name": "Alexander Wunschik",
-        "email": "mail@wunschik.it",
-        "url": "http://www.wunschik.it"
-    }],
+    "keywords": ["webpack", "webpackloader"],
+    "author": "bytefunc <bytefunc@gmail.com>",
     "license": "MIT",
     "peerDependencies": {
         "webpack": ">=2.2.0"
