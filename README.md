@@ -4,12 +4,12 @@ Remove the specific comment block at build
 
 Forked from [huanz/webpack-strip-block](https://github.com/huanz/webpack-strip-block)
 
-### Example
+## Example
 
 When used default seting. remove the comment block below
 
 ```javascript
-// webpack.config
+// webpack.config.js
 {
     test: /\.js$/,
     exclude: /node_modules/,
@@ -31,10 +31,11 @@ console.log(x);
 const y = 5;
 ```
 
+<br>
 If you will remove HTML comment tags. set options property stert and end.
 
 ```javascript
-// webpack.config
+// webpack.config.js
 {
     test: /\.html$/,
     use: [
@@ -54,7 +55,7 @@ If you will remove HTML comment tags. set options property stert and end.
 <html>
 <head>
     <!-- devblock:start -->
-    <link href="css/dev.css" rel="stylesheet">>
+    <link href="css/dev.css" rel="stylesheet">
     <!-- devblock:end -->
 </head>
 <body>
@@ -65,21 +66,56 @@ If you will remove HTML comment tags. set options property stert and end.
 </html>
 ```
 
-### Example2
+<br>
+
+## Remove the comment block on or off
 
 Options property active is the "webpack-remove-block-loader" on or off
 
+
 ```javascript
+
+// webpack4
+
+// Cli command. remove the comment block
+webpack --mode production
+
+// Cli command. not remove the comment block
+webpack --mode development
+
+// webpack.config.js
+module.exports = function(env, argv) {
+    return [{
+         // ...
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+            {
+                loader: "webpack-remove-block-loader",
+                options: {
+                    active: (argv.mode === "production"),
+                }
+            }
+        ]
+    }];
+};
+```
+
+
+```javascript
+
+// webpack3
+
 // Cli command. remove the comment block
 webpack --env.prod
 
 // Cli command. not remove the comment block
 webpack
 
-// webpack.config
-module.exports = env => [
-    // ...
-    {
+// webpack.config.js
+module.exports = function(env) {
+    return [{
+         // ...
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
@@ -90,8 +126,8 @@ module.exports = env => [
                 }
             }
         ]
-    }
-];
+    }];
+};
 ```
 
 ## options
