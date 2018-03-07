@@ -7,7 +7,7 @@
         "type": "git",
         "url": "https://github.com/bytefunc/webpack-remove-block-loader"
     },
-    "keywords": ["webpack", "webpackloader"],
+    "keywords": ["webpack", "webpack4", "webpackloader"],
     "author": "bytefunc <bytefunc@gmail.com>",
     "license": "MIT",
     "peerDependencies": {
